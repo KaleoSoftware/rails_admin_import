@@ -30,6 +30,10 @@ module RailsAdmin
           true
         end
 
+        register_instance_option :visible? do
+          bindings[:abstract_model].model_name.constantize.included_modules.include?(RailsAdminImport::Import)
+        end
+
         register_instance_option(:http_methods) do
           [:get, :post]
         end
